@@ -1,7 +1,7 @@
 <script>
 	// import { PUBLIC_OPENAI_KEY } from "$env/static/public";
     // const PUBLIC_OPENAI_KEY = process.env.PUBLIC_OPENAI_KEY;
-    const PUBLIC_OPENAI_KEY = import.meta.env.PUBLIC_OPENAI_KEY
+    const VITE_PUBLIC_OPENAI_KEY = import.meta.env.VITE_PUBLIC_OPENAI_KEY
 	import { ProgressBar } from "@skeletonlabs/skeleton";
     import { onMount } from "svelte";
 
@@ -10,6 +10,7 @@
     let input = "";
 
     let loading = false;
+    // console.log(VITE_PUBLIC_OPENAI_KEY)
 
 	async function fetchData() {
         loading = true;
@@ -24,7 +25,7 @@
         const response = await fetch("https://api.openai.com/v1/chat/completions", {
             method: 'POST',
             headers: {
-                Authorization: `Bearer ${PUBLIC_OPENAI_KEY}`, 
+                Authorization: `Bearer ${VITE_PUBLIC_OPENAI_KEY}`, 
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
