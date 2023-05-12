@@ -1,6 +1,7 @@
 <script>
 	// import { PUBLIC_OPENAI_KEY } from "$env/static/public";
-    const PUBLIC_OPENAI_KEY = process.env.PUBLIC_OPENAI_KEY;
+    // const PUBLIC_OPENAI_KEY = process.env.PUBLIC_OPENAI_KEY;
+    const PUBLIC_OPENAI_KEY = import.meta.env.PUBLIC_OPENAI_KEY
 	import { ProgressBar } from "@skeletonlabs/skeleton";
     import { onMount } from "svelte";
 
