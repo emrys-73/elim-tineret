@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
     import { supabase } from "$lib/supabaseClient";
-    import { PUBLIC_APP_DOMAIN } from "$env/static/public";
+    // import { PUBLIC_APP_DOMAIN } from "$env/static/public";
 	import { modalStore, type ModalSettings } from '@skeletonlabs/skeleton';
 
     let email = "";
@@ -28,7 +28,7 @@
             email, 
             password,
             options: {
-                emailRedirectTo: `${PUBLIC_APP_DOMAIN}/admin`
+                emailRedirectTo: `/admin`
             }
         });
         if (error) {
