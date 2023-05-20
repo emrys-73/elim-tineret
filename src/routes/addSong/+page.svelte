@@ -11,7 +11,6 @@
         tempo: null,
         chords: "",
         lyrics: "",
-        tabara_candidate: false
     };
 
     const success_toast = () => {
@@ -93,9 +92,6 @@
         addMoreInfo = !addMoreInfo;
     }
 
-    const recommendTabara = () => {
-        payload.tabara_candidate = !payload.tabara_candidate
-    }
 
     const validateKey = () => {
         payload.key = payload.key.toUpperCase()
@@ -204,13 +200,6 @@
                     <input  class=" input" type="text" placeholder="Lyrics"  bind:value={payload.lyrics}/>
                 </div>
             {/if}
-            <div class="p-2 w-[300px] md:w-[400px] lg:w-[600px]">
-                <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                    <input type="checkbox" value="" class="sr-only peer" on:click={recommendTabara}>
-                    <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-600"></div>
-                    <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Recommend for Tabara</span>
-                  </label>
-            </div>
             <div class="p-2">
                 <button type="submit" class="btn variant-filled-secondary p-2">Submit Song</button>
                 {#if !addMoreInfo}

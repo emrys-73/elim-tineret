@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { supabase } from '$lib/supabaseClient.js';
 	import { modalStore, type ModalSettings, Paginator} from '@skeletonlabs/skeleton';
+	import { onMount } from 'svelte';
 
     export let data;
     let { songs } = data;
@@ -9,18 +11,52 @@
     const addSong = async () => {
         goto('/addSong')
     }
+
+	let logged_in = false;
+
+	// Check that user is logged in
+	onMount(async () => {
+      const { data } = await supabase.auth.getSession();
+      if (data.session) {
+        logged_in = true;
+		goto('/songs');
+      }
+	  if (!logged_in) {
+		goto('/login');
+	  }
+    });
+
+	let selectedSongs = 0;
+	const selectionMac = 15;
+	let likedSongs = 0;
+
+	const submitLikes = () => {
+		// TODO: find a way to add likes
+	}
+
 </script>
 
 <div class="container p-10 space-y-4">
 	<h1>Songs</h1>
-	<hr />
+<hr />
+
+<!-- 
+	<div>
+		<p>
+			Songs you've liked: {likedSongs}
+		</p>
+	</div>
+-->
+
     
 <!-- Responsive Container -->
 <div class="table-container">
 	<!-- Native Table Element -->
-	<table class="table table-hover">
+	<table class="table table-interactive table-compact table-row-checked">
 		<thead>
 			<tr>
+				<!-- heart thingi -->
+				<!-- <th>Likes</th> -->
 				<th>Name</th>
                 <th>Author</th>
 				<th>Key</th>
@@ -31,6 +67,8 @@
 		<tbody>
 			{#each songs as song, i}
 				<tr>
+					<!-- m<td>♡</td> -->
+					<!-- <td class="selection:bg-black">{song.likes}</td> -->
 					<td>{song.name}</td>
 					<td>{song.author}</td>
                     <td>{song.key}</td>
@@ -49,6 +87,6 @@
     </div>
 </div>
 
-
+<!-- <p> Logged in: {logged_in} </p> -->
 
 </div>
