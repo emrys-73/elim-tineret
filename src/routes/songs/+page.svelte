@@ -19,10 +19,10 @@
       const { data } = await supabase.auth.getSession();
       if (data.session) {
         logged_in = true;
-		goto('/songs');
+		// goto('/songs');
       }
 	  if (!logged_in) {
-		goto('/login');
+		// goto('/login');
 	  }
     });
 
