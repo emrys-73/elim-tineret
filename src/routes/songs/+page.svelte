@@ -3,6 +3,15 @@
 	import { supabase } from '$lib/supabaseClient.js';
 	import { modalStore, type ModalSettings, Paginator} from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
+	import { count } from '$lib/stores/songStore.js';
+	import SetSongData from '$lib/components/SetSongData.svelte';
+
+	let countValue;
+
+	count.subscribe(value => {
+		countValue = value;
+	});
+
 
     export let data;
     let { songs } = data;
@@ -34,6 +43,10 @@
 		// TODO: find a way to add likes
 	}
 
+	const goToSingleSong = () => {
+		goto("/single_song");
+	}
+
 </script>
 
 <div class="container p-10 space-y-4">
@@ -51,6 +64,7 @@
     
 <!-- Responsive Container -->
 <div class="table-container">
+
 	<!-- Native Table Element -->
 	<table class="table table-interactive table-compact table-row-checked">
 		<thead>
@@ -69,11 +83,17 @@
 				<tr>
 					<!-- m<td>♡</td> -->
 					<!-- <td class="selection:bg-black">{song.likes}</td> -->
-					<td>{song.name}</td>
+					<!-- svelte-ignore a11y-click-events-have-key-events -->
+					<td><SetSongData song_name={song.name}
+						song_author={song.author}
+						song_key={song.key}
+						song_tempo={song.tempo}
+						song_link={song.yt_link}
+						/></td>
 					<td>{song.author}</td>
-                    <td>{song.key}</td>
-                    <td>{song.tempo}</td>
-                    <a href="{song.yt_link} ">
+					<td>{song.key}</td>
+					<td>{song.tempo}</td>
+                    <a href="{song.yt_link}">
                         <td>🔗</td>
                     </a>
 				</tr>
