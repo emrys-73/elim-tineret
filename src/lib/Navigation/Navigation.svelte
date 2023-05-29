@@ -25,13 +25,14 @@
 		<li><a href="/" on:click={drawerClose}>Home</a></li>
         <li><a href="/songs" on:click={drawerClose}>Songs</a></li>
 
-        {#if !logged}
+        <li><a href="/bibgen" on:click={drawerClose}>Bible AI</a></li>
+
+        <!-- {#if !logged}
             <li><a href="/login" on:click={drawerClose}>Log In</a></li>
         {:else}
             <li><a href="/admin" on:click={drawerClose}>Your Account</a></li>
         {/if}
-
-        <li><a href="/bibgen" on:click={drawerClose}>Extras</a></li>
+    -->
 	</ul>
     <div class=" text-gray-500 lg:bottom-0 lg:p-4 lg:absolute ">
         <p class="text-xs"> Made with 🤍 for Him</p>
