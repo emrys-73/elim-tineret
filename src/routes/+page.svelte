@@ -7,6 +7,14 @@
 	<hr /> 
 	<br>
 	<h2>
+		v.0.2.1
+	</h2>
+	<pre>
+- Pro B-AI (Bible AI) Verse for topic Generator
+	- Use the tag "/pro" at the beginning of the input to generate 10 results instead of 3. Loading time increases accordingly. 
+- UX Bug Fixes at B-AI
+	</pre>
+	<h2>
 		v.0.2.0
 	</h2>
 	<pre>

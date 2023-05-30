@@ -58,6 +58,13 @@
 	}
 
     async function fetchTopicData() {
+        if (topic_input.includes("/pro")) {
+            topic_input = topic_input.replace("/pro", "");
+            // topic_finished_loading = true
+            // topic_res = topic_input
+            fetchTopicDataExtended()
+            return
+        }
         topic_loading = true;
         topic_finished_loading = false;
         
@@ -102,6 +109,51 @@
         }
         
     }
+    
+    async function fetchTopicDataExtended() {
+        topic_loading = true;
+        topic_finished_loading = false;
+        
+        prompt = `List 10 bibble verses related to the following topic and include their references. \ 
+        You will also give a short explanation for why you chose each verse: ${topic_input}`
+        
+        
+        console.log(prompt)
+        
+        const response = await fetch("https://api.openai.com/v1/chat/completions", {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${VITE_PUBLIC_OPENAI_KEY}`, 
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                    model: "gpt-3.5-turbo",
+                    // YOu can even send separate messages
+                    messages: [{
+                        role: 'system', 
+                        content: `Your task is to always provide \
+                        a list of 10 bibble verses references to the topic that is being discussed`
+                    },
+                    {
+                        role: "user",
+                        content: prompt
+                    }]
+                })
+            })
+
+        
+        const data = await response.json()
+        topic_loading = false;
+        if (data) {
+            console.log(data)
+            topic_res = data.choices[0].message.content;
+            console.log(topic_res)
+            topic_finished_loading = true;
+        }
+        else {
+            console.log("An error occured")
+        }
+    }
 
 </script>
 
@@ -115,7 +167,7 @@
         Verse for emotion
     </h2>
 	<p>
-        Try describing how you are feeling, what are you thinking about or what are you struggling with and you'll get a bibble verse for that topic.
+        Describe how you are feeling or any problem you are facing.
     </p>
     
     
@@ -156,7 +208,7 @@
         }
     }} bind:value={topic_input}></textarea>
 
-    <button type="button" on:click={fetchTopicData} class="text-black bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-6 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 hover:text-white dark:text-white">Find</button>
+    <button type="button" on:click={fetchTopicData} class="text-black bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-6 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 hover:text-white dark:text-white min-w-full">Find</button>
     <div>
         {#if topic_loading}
             <ProgressBar value={undefined}/>
@@ -170,7 +222,7 @@
 
     <div class="flex flex-col items-center">
         <p class="italic text-gray-500 text-xs justify-center absolute bottom-4 w-[300px] md:w-[600px] lg:w-full text-center">
-            The results are generated using the public beta of the BVG-1 Generative Model and might not be accurate all the time.
+            The results are generated using an alpha version of the BVG-1 Generative Model and might not be accurate all the time.
         </p>
     </div>
 </div>
