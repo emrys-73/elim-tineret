@@ -184,7 +184,7 @@
         Verset biblic pentru sentiment sau problemă
     </h2>
 	<p>
-        Descrieți un sentiment sau orice problemă cu care vă confruntați și obțineți un verset din Biblie pentru el.
+        Descrie un sentiment sau o problemă cu care te confrunți și obține un verset din Biblie pentru ea.
     </p>
     
     
@@ -213,7 +213,7 @@
         Verset biblic pentru subiect
     </h2>
 	<p>
-        Denumiți un subiect și obțineți o listă de versete biblice legate de acesta.
+        Denumește un subiect și obține o listă de versete biblice legate de aceasta.
     </p>
     
     
