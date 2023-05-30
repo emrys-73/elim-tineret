@@ -3,16 +3,25 @@
 
 <div class="container p-10 space-y-4">
 	<!-- <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"> <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500"> Tineret </mark> Worship </h1> -->
-	<h1> Tineret Worship</h1>
+	<h1> Elim Tineret Log</h1>
 	<hr /> 
 	<br>
+
+	<h2>
+		v.0.2.2
+	</h2>
+	<pre>
+- Bible-AI is now available in romanian and german (beta)
+	</pre>
+
+
 	<h2>
 		v.0.2.1
 	</h2>
 	<pre>
-- Pro B-AI (Bible AI) Verse for topic Generator
+- Introducing Bible-AI Pro Verse for topic Generator
 	- Use the tag "/pro" at the beginning of the input to generate 10 results instead of 3. Loading time increases accordingly. 
-- UX Bug Fixes at B-AI
+- UX Improvements for Bible-AI
 	</pre>
 	<h2>
 		v.0.2.0

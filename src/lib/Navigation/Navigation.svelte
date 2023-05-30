@@ -22,7 +22,7 @@
 
 <nav class="list-nav p-4">
 	<ul>
-		<li><a href="/" on:click={drawerClose}>Home</a></li>
+		<li><a href="/" on:click={drawerClose}>Log</a></li>
         <li><a href="/songs" on:click={drawerClose}>Songs</a></li>
 
         <li><a href="/bibgen" on:click={drawerClose}>Bible AI</a></li>
