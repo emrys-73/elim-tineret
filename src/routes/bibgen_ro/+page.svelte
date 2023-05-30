@@ -240,7 +240,7 @@
     <div class="flex flex-col items-center">
         
         
-        <p class="italic text-gray-500 text-xs justify-center absolute bottom-4 w-[300px] md:w-[600px] lg:w-full text-center">
+        <p class="italic text-gray-500 text-xs justify-center bottom-4 w-[300px] md:w-[600px] lg:w-full text-center">
             The results are generated using an alpha version of the BVG-1 Generative Model and do not guarantee accuracy.
         </p>
     </div>

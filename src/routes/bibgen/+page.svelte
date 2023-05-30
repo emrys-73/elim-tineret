@@ -212,7 +212,7 @@
     
     
 	<br>
-    <textarea name="input" id="input" placeholder="Type in the topic" class=" placeholder:italic dark:text-black min-w-[300px]" on:keydown={(e) => {
+    <textarea name="input" id="input" placeholder="Type in here" class=" placeholder:italic dark:text-black min-w-[300px]" on:keydown={(e) => {
         if (e.key === "Enter" && e.shiftKey === false) {
             e.preventDefault(); // prevent new line
             fetchTopicData();
@@ -232,7 +232,7 @@
 
 
     <div class="flex flex-col items-center">
-        <p class="italic text-gray-500 text-xs justify-center absolute bottom-4 w-[300px] md:w-[600px] lg:w-full text-center">
+        <p class="italic text-gray-500 text-xs justify-center bottom-4 w-[300px] md:w-[600px] lg:w-full text-center">
             The results are generated using an alpha version of the BVG-1 Generative Model and do not guarantee accuracy.
         </p>
     </div>
